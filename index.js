@@ -11,8 +11,6 @@ app.use(express.json());
 
 const uri = `mongodb+srv://${process.env.S3_BUCKET}:${process.env.SECRET_KEY}@cluster0.at4k8pd.mongodb.net/?retryWrites=true&w=majority`;
 
-// console.log(process.env)
-
 console.log(uri);
 const client = new MongoClient(uri, {
         serverApi: {
@@ -59,6 +57,10 @@ async function run() {
 }
 run().catch(console.dir);
 
+
+app.get('/', (req, res) => {
+        res.send('Hello World!');
+})
 app.listen(port, () => {
         console.log("port number: ", port);
 })
